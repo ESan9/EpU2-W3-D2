@@ -25,13 +25,6 @@ function startTimer() {
   }
 }
 
-// Resetta il contatore
-function resetTimer() {
-  seconds = 0;
-  timerElement.textContent = seconds;
-  sessionStorage.removeItem("timerValue"); // Rimuovi dal sessionStorage
-}
-
 window.addEventListener("load", () => {
   loadFromSessionStorage();
   startTimer();
