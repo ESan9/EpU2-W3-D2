@@ -18,6 +18,10 @@ function loadFromLocalStorage() {
   }
 }
 
+function unloadFromLocalStorage() {
+  localStorage.clear();
+}
+
 // Avvia il contatore
 function startTimer() {
   if (!timerInterval) {
@@ -34,9 +38,9 @@ function resetTimer() {
   localStorage.removeItem("timerValue"); // Rimuovi dal localStorage
 }
 
-// Gestione degli eventi dei pulsanti
-window.addEventListener("load", startTimer);
-window.addEventListener("beforeunload", resetTimer);
+window.addEventListener("load", () => {
+  loadFromLocalStorage();
+  startTimer();
+});
 
-// Carica il valore iniziale all'avvio della pagina
-loadFromLocalStorage();
+window.addEventListener("beforeunload", resetTimer);
